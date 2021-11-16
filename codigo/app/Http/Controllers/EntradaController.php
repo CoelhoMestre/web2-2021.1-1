@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreEntradaRequest;
+
 use App\Models\Entrada;
 class EntradaController extends Controller
 {
@@ -20,7 +22,7 @@ class EntradaController extends Controller
         return view('entradas.create'); 
     }
 
-    public function store(Request $request)
+    public function store(StoreEntradaRequest $request)
     {
         $entrada = new Entrada();
         $entrada->idfornecedor = $request->idfornecedor;

@@ -10,15 +10,31 @@
         @csrf
         <div class="input m-3">
             <label for="">Idfornecedor:</label>
-            <input type="text" name="idfornecedor" id="idfornecedor"class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Id">
+            <input type="text" name="idfornecedor" id="idfornecedor" class="form-control @error('idfornecedor') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('idfornecedor') }}">
+            @error('idfornecedor')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        
         </div>
         <div class="input m-3">
             <label for="">Valor total:</label>
-            <input type="text" name="valortotal" id="valortotal"class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Valor total">
+            <input type="text" name="valortotal" id="valortotal" class="form-control @error('valortotal') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('valortotal') }}">
+            @error('valortotal')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
         <div class="input m-3">
             <label for="">Data:</label>
-            <input type="date" name="datacompra" id="datacompra"class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Data">
+            <input type="date" name="datacompra" id="datacompra" class="form-control @error('datacompra') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('datacompra') }}">
+            @error('datacompra')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
         <div class="input m-3">
             <input type="submit" class="form-control btn-dark" value="Cadastrar">

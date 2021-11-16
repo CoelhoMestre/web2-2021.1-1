@@ -11,12 +11,22 @@
         
         <div class="input m-3">
             <label for="">Identradas:</label>
-            <input type="text" name="identrada" id="identrada" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="IdEntrada">
+            <input type="text" name="identrada" id="identrada" class="form-control @error('identrada') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('identrada') }}">
+            @error('identrada')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
 
         <div class="input m-3">
             <p><label for="">Quantidade:</label>
-            <input type="text" name="quantidade" id="quantidade" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Quantidade">
+            <input type="text" name="quantidade" id="quantidade" class="form-control @error('quantidade') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('quantidade') }}">
+            @error('quantidade')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
 
         <div class="input m-3">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreClienteRequest;
 use App\Models\Cliente;
 class ClienteController extends Controller
 {
@@ -20,7 +21,8 @@ class ClienteController extends Controller
         return view('clientes.create'); 
     }
 
-    public function store(Request $request){
+    public function store(StoreClienteRequest $request){
+
         $cliente= new Cliente();
         $cliente->nome= $request->nome;
         $cliente->sexo= $request->sexo;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fornecedor;
+use App\Http\Requests\StoreFornecedorRequest;
 class FornecedorController extends Controller
 {
     //
@@ -19,7 +20,7 @@ class FornecedorController extends Controller
         return view('fornecedores.create'); 
     }
 
-    public function store(Request $request){
+    public function store(StoreFornecedorRequest $request){
         $fornecedor= new Fornecedor();
         $fornecedor->nome= $request->nome;
         $fornecedor->cnpj= $request->cnpj;

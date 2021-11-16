@@ -5,14 +5,14 @@
 @section('conteudo')
 
 <div id="form">
-<h1>ItensVendas Cadastrados</h1>
+<h1>Vendas Cadastradas</h1>
 <table class="table table-striped table-dark">
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">IDVenda</th>
-            <th scope="col">Quantidade</th>
-            
+            <th scope="col">IdCliente</th>
+            <th scope="col">ValorTotal</th>
+            <th scope="col">Data</th>
             <th></th>
             <th></th>
         </tr>

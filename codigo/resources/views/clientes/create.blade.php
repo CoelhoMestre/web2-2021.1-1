@@ -5,26 +5,56 @@
 @section('conteudo')
 
 <div id="form">
+
     <h1>Cadastro de Cliente</h1>
-    <form action="{{route('clientes.store')}}" method="post">
+    <form action="{{route('clientes.store')}}" method="post" >
         @csrf
         
         <div class="input m-3">
             <label for="">Nome</label>
-            <input type="text" name="nome" id="nome" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Nome">
+            <input type="text" name="nome" id="nome" class="form-control @error('nome') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('nome') }}">
+            @error('nome')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+
         </div>
+        
+
         <div class="input m-3">
             <label for="">Sexo</label>
-            <input type="text" name="sexo" id="sexo" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Sexo">
+            <input type="text" name="sexo" id="sexo" class="form-control @error('sexo') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('sexo') }}" >
+            @error('sexo')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
+        
+
         <div class="input m-3">
             <label for="">Endereço</label>
-            <input type="text"  name="endereco" id="endereco" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Endereço">
+            <input type="text"  name="endereco" id="endereco" class="form-control @error('endereco') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('endereco') }}">
+            @error('endereco')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
+        
+
         <div class="input m-3">
             <label for="">Débito</label>
-            <input type="text" name="debito" id="debito" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Débito">
+            <input type="number" name="debito" id="debito" class="form-control @error('debito') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('debito') }}">
+            @error('debito')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
+        
+
         <div class="input m-3">
             <input type="submit" class="form-control btn-dark" value="Cadastrar">
         </div>

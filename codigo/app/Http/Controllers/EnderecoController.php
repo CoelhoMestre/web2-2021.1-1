@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Endereco;
+use App\Http\Requests\StoreEnderecoRequest;
+
 class EnderecoController extends Controller
 {
     //
@@ -20,7 +22,7 @@ class EnderecoController extends Controller
         return view('enderecos.create'); 
     }
 
-    public function store(Request $request)
+    public function store(StoreEnderecoRequest $request)
     {
         $endereco = new Endereco();
         $endereco->logradouro = $request->logradouro;

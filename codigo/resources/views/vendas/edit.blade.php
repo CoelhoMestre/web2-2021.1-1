@@ -10,20 +10,34 @@
         @csrf
         @method('PUT')
         <div class="input m-3">
-        <label for="">Id Cliente</label>
-        <input type="text" name="cliente" id="cliente" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$venda->id}}">
+            <label for="">Idcliente:</label>
+            <input type="text" name="idcliente" id="idcliente" class="form-control @error('idcliente') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$venda->id}}">
+            @error('idcliente')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        
         </div>
-
         <div class="input m-3">
-        <p><label for="">Valor Total</label>
-        <input type="text" name="valortotal" id="valortotal" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$venda->valortotal}}">
-        </div>
+            <label for="">Valor total:</label>
+            <input type="text" name="valortotal" id="valortotal" class="form-control @error('valortotal') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$venda->valortotal}}">
+            @error('valortotal')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
 
+        </div>
         <div class="input m-3">
-        <p><label for="">Data</label>
-        <input type="date" name="datavenda" id="datavenda" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$venda->datavenda}}">
+            <label for="">Data:</label>
+            <input type="date" name="datavenda" id="datavenda" class="form-control @error('datavenda') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$venda->datavenda}}">
+            @error(datavenda')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
         </div>
-
         <div class="input m-3">
             <input type="submit" class="form-control btn-dark" value="salvar">
         </div> 

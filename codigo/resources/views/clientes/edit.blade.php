@@ -11,19 +11,46 @@
         
         <div class="input m-3">
             <label for="">Nome</label>
-            <input type="text" name="nome" id="nome" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$cliente->nome}}">
+            <input type="text" name="nome" id="nome" class="form-control @error('nome') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$cliente->nome}}">
+            @error('nome')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        
+        
         </div>
         <div class="input m-3">
             <label for="">Sexo</label>
-            <input type="text" name="sexo" id="sexo" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$cliente->sexo}}">
+            <input type="text" name="sexo" id="sexo" class="form-control @error('sexo') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$cliente->sexo}}">
+            @error('sexo')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        
+        
         </div>
         <div class="input m-3">
             <label for="">Endereço</label>
-            <input type="text"  name="endereco" id="endereco" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$cliente->endereco}}">
+            <input type="text"  name="endereco" id="endereco" class="form-control @error('endereco') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$cliente->endereco}}">
+            @error('endereco')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        
+        
         </div>
         <div class="input m-3">
             <label for="">Débito</label>
-            <input type="text" name="debito" id="debito" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  value="{{$cliente->debito}}">
+            <input type="text" name="debito" id="debito" class="form-control @error('debito') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  value="{{$cliente->debito}}">
+            @error('debito')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        
         </div>
         <div class="input m-3">
             <input type="submit" class="form-control btn-dark" value="salvar">
