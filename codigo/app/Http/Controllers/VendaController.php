@@ -30,7 +30,7 @@ class VendaController extends Controller
         $venda->datavenda= $request->datavenda;
         $venda->save();
 
-        return redirect('/vendas/index');
+        return redirect('vendas.index');
     }
 
     
@@ -39,14 +39,15 @@ class VendaController extends Controller
         return view('vendas.edit', ['venda'=>$venda]);
     }
 
-    public function update(Request $request){
+    public function update(StoreVendaRequest $request){
         Venda::find($request->id)->update($request->except('_method'));
-        return redirect('vendas/index')->with('msg', 'venda atualizada');
+        return redirect('vendas.index')->with('msg', 'venda atualizada');
     }
     
     public function destroy($id){
         Venda::findorFail($id)->delete();
-        return redirect('vendas/index')->with('msg', 'venda excluída com sucesso');
+        return redirect('vendas.index')->with('msg', 'venda excluída com sucesso');
     }
 
 }
+

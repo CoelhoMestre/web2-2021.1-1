@@ -114,7 +114,8 @@
             <p>
         </div>
 
-            <div class="input m-3">
+        <div class="btn btn-lg" id= "button">
+
                 <input type="submit" class="form-control btn-dark" value="Cadastrar">
             </div>  
     </form>

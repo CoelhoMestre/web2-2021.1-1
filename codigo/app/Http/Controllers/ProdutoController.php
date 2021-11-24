@@ -37,7 +37,7 @@ class ProdutoController extends Controller
         $produto->quantidade = $request->quantidade;
         $produto->save();
 
-        return redirect('/produtos/index');
+        return redirect('produtos.index');
     }
 
     
@@ -46,14 +46,14 @@ class ProdutoController extends Controller
         return view('produtos.edit', ['produto'=>$produto]);
     }
 
-    public function update(Request $request){
+    public function update(StoreProdutoRequest $request){
         Produto::find($request->id)->update($request->except('_method'));
-        return redirect('produtos/index')->with('msg', 'produto atualizado');
+        return redirect('produtos.index')->with('msg', 'produto atualizado');
     }
     
     public function destroy($id){
         Produto::findorFail($id)->delete();
-        return redirect('produtos/index')->with('msg', 'produto excluído com sucesso');
+        return redirect('produtos.index')->with('msg', 'produto excluído com sucesso');
     }
 
 }

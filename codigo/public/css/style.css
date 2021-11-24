@@ -1,13 +1,14 @@
 body{
     margin:0;
     padding: 0;
-    background: #0011fff5;
+    background: #004855f5;
     font: 85% arial, sans-serif;
     text-align: center;
 }
 
 #container{
-    background: #0249b3f5;
+    background: #017286f5;
+    ;
     margin-left: 100px;
     margin-right: 100px;
     width: auto;
@@ -27,7 +28,7 @@ body{
 
 #conteudo{
 
-    background:  #0249b3f5;
+    background:  #017286f5;
     margin: 15px 15px 15px 15px;
     height: 6px;
 }
@@ -35,7 +36,7 @@ body{
 #form{
     float: center;
     width: auto;
-    background:  #0249b3f5;
+    background:  #017286f5;
     color: rgb(255, 255, 255);
     margin: 15px 200px 15px 200px;
 }
@@ -64,3 +65,7 @@ h1{
     padding-bottom: 30px;
   } 
 
+#button{
+    text-align: center;
+    margin-left: 88%;
+}

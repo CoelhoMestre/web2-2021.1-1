@@ -31,7 +31,7 @@ class EnderecoController extends Controller
         $endereco->uf = $request->uf;
         $endereco->cliente_id = $request->cliente_id;
         $endereco->save();
-        return redirect('/enderecos/index');
+        return redirect('enderecos.index');
     }
 
     
@@ -40,14 +40,14 @@ class EnderecoController extends Controller
         return view('enderecos.edit', ['endereco'=>$endereco]);
     }
 
-    public function update(Request $request){
+    public function update(StoreEnderecoRequest $request){
         Endereco::find($request->id)->update($request->except('_method'));
-        return redirect('enderecos/index')->with('msg', 'endereco atualizado');
+        return redirect('enderecos.index')->with('msg', 'endereco atualizado');
     }
     
     public function destroy($id){
         Endereco::findorFail($id)->delete();
-        return redirect('enderecos/index')->with('msg', 'endereco excluído com sucesso');
+        return redirect('enderecos.index')->with('msg', 'endereco excluído com sucesso');
     }
 
 }

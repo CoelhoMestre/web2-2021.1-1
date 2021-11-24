@@ -28,7 +28,7 @@ class StoreEnderecoRequest extends FormRequest
                 'bairro' => 'required',
                 'cidade' => 'required',
                 'uf' => 'required|min:2|max:2',
-                'cliente_id' => 'required'
+                'idcliente' => 'required'
                    
         ];
     }
@@ -41,7 +41,7 @@ class StoreEnderecoRequest extends FormRequest
             'uf.required' => 'Preencha o campo UF*',
             'uf.min' => "Campo UF deve ter no mínimo :min letras*",
             'uf.max' => "Campo UF deve ter no máximo :min letras*",
-            'cliente_id.required' => 'Preencha o campo ID Cliente*'
+            'idcliente.required' => 'Preencha o campo ID Cliente*'
         ];
     }
 }
