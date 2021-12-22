@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreEntradaRequest;
+
 use App\Models\Entrada;
 class EntradaController extends Controller
 {
@@ -14,13 +16,13 @@ class EntradaController extends Controller
 
     public function index(){
         $entradas = Entrada::all();
-        return view('entrada.index', ['entradas'=>$entradas]);
+        return view('entradas.index', ['entradas'=>$entradas]);
     }
     public function create(){
-        return view('entrada.create'); 
+        return view('entradas.create'); 
     }
 
-    public function store(Request $request)
+    public function store(StoreEntradaRequest $request)
     {
         $entrada = new Entrada();
         $entrada->idfornecedor = $request->idfornecedor;
@@ -28,23 +30,23 @@ class EntradaController extends Controller
         $entrada->datacompra = $request->datacompra;
         $entrada->save();
 
-        return redirect('/entradas/index');
+        return redirect('entradas.index');
     }
 
     
     public function edit($id){
         $entrada = Entrada::findorFail($id);
-        return view('entrada.edit', ['entrada'=>$entrada]);
+        return view('entradas.edit', ['entrada'=>$entrada]);
     }
 
-    public function update(Request $request){
+    public function update(StoreEntradaRequest $request){
         Entrada::find($request->id)->update($request->except('_method'));
-        return redirect('entrada/index')->with('msg', 'entrada atualizada');
+        return redirect('entradas.index')->with('msg', 'entrada atualizada');
     }
     
     public function destroy($id){
         Entrada::findorFail($id)->delete();
-        return redirect('entrada/index')->with('msg', 'entrada excluída com sucesso');
+        return redirect('entradas.index')->with('msg', 'entrada excluída com sucesso');
     }
 
 }

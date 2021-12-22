@@ -16,7 +16,7 @@ class Venda extends Model
     protected $guarded = [];
     
     public function cliente(){
-        return $this->belongsTo(Cliente::class, 'cliente_id','id');
+        return $this->belongsTo(Cliente::class, 'venda_id','id');
     }
 
     function itensvenda(){

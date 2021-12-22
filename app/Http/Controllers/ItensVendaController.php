@@ -4,46 +4,48 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ItensVenda;
+use App\Http\Requests\StoreItensVendaRequest;
+
 class ItensVendaController extends Controller
 {
     //
     public function show(){
-        $vendas = ItensVenda::all();
-        echo $vendas;
+        $itensvendas = ItensVenda::all();
+        echo $itensvendas;
     }
 
     public function index(){
         $itensvendas = ItensVenda::all();
-        return view('itensvenda.index', ['itensvendas'=>$itensvendas]);
+        return view('itensvendas.index', ['itensvendas'=>$itensvendas]);
     }
     public function create(){
-        return view('itensvenda.create'); 
+        return view('itensvendas.create'); 
     }
 
-    public function store(Request $request)
+    public function store(StoreItensVendaRequest $request)
     {
         $itensvenda = new ItensVenda();
         $itensvenda->idvenda = $request->idvenda;
         $itensvenda->quantidade= $request->quantidade;
         $itensvenda->save();
 
-        return redirect('/itensvendas/index');
+        return redirect('itensvendas.index');
     }
 
     
     public function edit($id){
         $itensvenda = ItensVenda::findorFail($id);
-        return view('itensvenda.edit', ['itensvenda'=>$itensvenda]);
+        return view('itensvendas.edit', ['itensvenda'=>$itensvenda]);
     }
 
-    public function update(Request $request){
+    public function update(StoreItensVendaRequest $request){
         ItensVenda::find($request->id)->update($request->except('_method'));
-        return redirect('itensvenda/index')->with('msg', 'itensvenda atualizada');
+        return redirect('itensvendas.index')->with('msg', 'itensvenda atualizada');
     }
     
     public function destroy($id){
         ItensVenda::findorFail($id)->delete();
-        return redirect('itensvenda/index')->with('msg', 'itensvenda excluída com sucesso');
+        return redirect('itensvendas.index')->with('msg', 'itensvenda excluída com sucesso');
     }
 
 }

@@ -1,16 +1,45 @@
-<h1>Fornecedores Cadastrados: </h1>
-@foreach ($fornecedores as $fornecedor)
+@extends('layouts.main')
 
-<ul>
-    
-    <li>Nome: {{$fornecedor->nome}};</li>
-    <li>CNPJ: {{$fornecedor->cnpj}};</li>
-    <li>Endereço: {{$fornecedor->endereco}};</li>
-    <a href="{{route('fornecedores.edit', [$fornecedores->id])}}">Editar</a>
-    <form action="{{route('fornecedores.destroy', ['id' => $fornecedor->id])}}" method="post">
-        @csrf
-        @method('DELETE')
-        <input type="submit" value="deletar">
-    </form>
-</ul>
-@endforeach
+@section('titulo','Lista de fornecedores')
+
+@section('conteudo')
+
+<div id="form">
+<h1>Fornecedores Cadastrados</h1>
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Endereço</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($fornecedores as $fornecedor)
+        <tr>
+            <th scope="row">{{$fornecedor->id}}</td>
+            <td>{{$fornecedor->nome}}</td>
+            <td>{{$fornecedor->cnpj}}</td>
+            <td>{{$fornecedor->endereco}}</td>
+            <td>
+            
+            <a href="{{route('fornecedores.edit', [$fornecedor->id])}} "><input type="submit" class="btn btn-danger" value="editar"></a>
+            </td>
+            <td>
+            <form action="{{route('fornecedores.destroy', [$fornecedor->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="btn btn-secondary" value="deletar">
+                
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+</div>
+
+@endsection('conteudo')

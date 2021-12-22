@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Http\Requests\StoreProdutoRequest;
+
 class ProdutoController extends Controller
 {
     //
@@ -14,13 +16,13 @@ class ProdutoController extends Controller
 
     public function index(){
         $produtos = Produto::all();
-        return view('produto.index', ['produtos'=>$produtos]);
+        return view('produtos.index', ['produtos'=>$produtos]);
     }
     public function create(){
-        return view('produto.create'); 
+        return view('produtos.create'); 
     }
 
-    public function store(Request $request)
+    public function store(StoreProdutoRequest $request)
     {
         $produto = new Produto();
         $produto->nome = $request->nome;
@@ -35,23 +37,23 @@ class ProdutoController extends Controller
         $produto->quantidade = $request->quantidade;
         $produto->save();
 
-        return redirect('/produtos/index');
+        return redirect('produtos.index');
     }
 
     
     public function edit($id){
         $produto = Produto::findorFail($id);
-        return view('produto.edit', ['produto'=>$produto]);
+        return view('produtos.edit', ['produto'=>$produto]);
     }
 
-    public function update(Request $request){
+    public function update(StoreProdutoRequest $request){
         Produto::find($request->id)->update($request->except('_method'));
-        return redirect('produto/index')->with('msg', 'produto atualizado');
+        return redirect('produtos.index')->with('msg', 'produto atualizado');
     }
     
     public function destroy($id){
         Produto::findorFail($id)->delete();
-        return redirect('produto/index')->with('msg', 'produto excluído com sucesso');
+        return redirect('produtos.index')->with('msg', 'produto excluído com sucesso');
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Fornecedor;
+use App\Http\Requests\StoreFornecedorRequest;
 class FornecedorController extends Controller
 {
     //
@@ -19,31 +20,27 @@ class FornecedorController extends Controller
         return view('fornecedores.create'); 
     }
 
-    public function store(Request $request){
+    public function store(StoreFornecedorRequest $request){
         $fornecedor= new Fornecedor();
         $fornecedor->nome= $request->nome;
         $fornecedor->cnpj= $request->cnpj;
         $fornecedor->endereco= $request->endereco;
         $fornecedor->save();
-        return redirect('/fornecedores/index');
+        return redirect('fornecedores.index');
     }
     public function edit($id){
         $fornecedor = Fornecedor::findorFail($id);
         return view('fornecedores.edit', ['fornecedor'=>$fornecedor]);
     }
 
-    public function update(Request $request){
+    public function update(StoreFornecedorRequest $request){
         Fornecedor::find($request->id)->update($request->except('_method'));
-        return redirect('fornecedores/index')->with('msg', 'Fornecedor atualizado');
+        return redirect('fornecedores.index')->with('msg', 'Fornecedor atualizado');
     }
     
     public function destroy($id){
         Fornecedor::findorFail($id)->delete();
-        return redirect('fornecedores/index')->with('msg', 'Fornecedor excluído com sucesso');
+        return redirect('fornecedores.index')->with('msg', 'Fornecedor excluído com sucesso');
     }
-
-
-
-
 
 }

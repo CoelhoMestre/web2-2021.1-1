@@ -1,28 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientes|Cadastro</title>
-</head>
-<body>
-    <h1>Cadastrar Cliente</h1>
-    <form action="{{route('clientes.store')}}" method="post">
+@extends('layouts.main')
+
+@section('titulo','Cadastro|Cliente Físico')
+
+@section('conteudo')
+
+<div id="form">
+    <h1>Cadastro de Cliente</h1>
+    <form action="{{route('clientes.store')}}" method="post" >
         @csrf
-        <label for="">Nome:</label>
-        <input type="text" name="nome" id="nome">
-
-        <p><label for="">Sexo:</label>
-        <input type="text" name="sexo" id="sexo">
-
-        <p><label for="">Endereço:</label>
-        <input type="text" name="endereco" id="endereco">
-
-        <p><label for="">Debito:</label>
-        <input type="text" name="debito" id="debito">
-        
-        <p><input type="submit" value="cadastrar">    
+        <div class="row">
+            <div class="col">
+                <div id="form1">
+                    <label for="">Nome do cliente</label>
+                </div>
+                <div id="forminput">
+                    <input type="text" name="nome" id="nome" class="form-control @error('nome') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('nome') }}">
+                        @error('nome')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                        @enderror  
+                </div>
+            </div>
+            <div class="col">
+                <div id="form1">
+                    <label for="">Telefone do cliente</label>
+                </div>
+                <div id="forminput">
+                    <input type="text" name="telefone" id="telefone" class="form-control @error('telefone') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('telefone') }}" >
+                        @error('telefone')
+                            <div class="invalid-feedback">
+                            {{$message}}
+                            </div>
+                        @enderror
+                </div>    
+            </div>
+            <p>
+            <div class="col">
+                <div id="form1">
+                    <label for="">Cpf do cliente</label>
+                </div>
+                <div id="forminput">
+                    <input type="text" name="cpf" id="cpf" class="form-control @error('cpf') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('cpf') }}" >
+                        @error('cpf')
+                            <div class="invalid-feedback">
+                            {{$message}}
+                            </div>
+                        @enderror 
+                </div>   
+            </div>
+            <div class="col">
+                <div id="form1">
+                    <label for="">Débito do cliente</label>
+                </div>
+                <div id="forminput">
+                    <input type="number" name="debito" id="debito" class="form-control @error('debito') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('debito') }}">
+                        @error('debito')
+                            <div class="invalid-feedback">
+                            {{$message}}
+                            </div>
+                        @enderror
+                </div>
+            </div>
+            <p>
+            <div class="col">
+                <div id="form1">
+                    <label for="">Endereço do cliente ( rua, bairro, cidade, complemento )</label>
+                </div>
+                <div id="forminput">
+                    <input type="text"  name="endereco" id="endereco" class="form-control @error('endereco') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ old('endereco') }}">
+                        @error('endereco')
+                            <div class="invalid-feedback">
+                            {{$message}}
+                            </div>
+                        @enderror   
+                </div>    
+            </div>
+        </div>
+        <div class="btn btn-lg" id= "button">
+            <input type="submit" class="form-control btn-primary custom-btn" value="Cadastrar" >
+        </div>
     </form>
-</body>
-</html>
+</div>
+@endsection('conteudo')

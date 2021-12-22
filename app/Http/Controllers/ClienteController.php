@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreClienteRequest;
 use App\Models\Cliente;
 class ClienteController extends Controller
 {
@@ -20,28 +21,29 @@ class ClienteController extends Controller
         return view('clientes.create'); 
     }
 
-    public function store(Request $request){
+    public function store(StoreClienteRequest $request){
+
         $cliente= new Cliente();
         $cliente->nome= $request->nome;
         $cliente->sexo= $request->sexo;
         $cliente->endereco= $request->endereco;
         $cliente->debito= $request->debito;
         $cliente->save();
-        return redirect('/clientes/index');
+        return redirect('clientes.index');
     }
     public function edit($id){
         $cliente = Cliente::findorFail($id);
         return view('clientes.edit', ['cliente'=>$cliente]);
     }
 
-    public function update(Request $request){
+    public function update(StoreClienteRequest $request){
         Cliente::find($request->id)->update($request->except('_method'));
-        return redirect('clientes/index')->with('msg', 'Cliente atualizado');
+        return redirect('clientes.index')->with('msg', 'Cliente atualizado');
     }
     
     public function destroy($id){
         Cliente::findorFail($id)->delete();
-        return redirect('clientes/index')->with('msg', 'Cliente excluído com sucesso');
+        return redirect('clientes.index')->with('msg', 'Cliente excluído com sucesso');
     }
 
 }

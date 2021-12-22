@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Endereco;
+use App\Http\Requests\StoreEnderecoRequest;
+
 class EnderecoController extends Controller
 {
     //
@@ -14,13 +16,13 @@ class EnderecoController extends Controller
 
     public function index(){
         $enderecos = Endereco::all();
-        return view('endereco.index', ['enderecos'=>$enderecos]);
+        return view('enderecos.index', ['enderecos'=>$enderecos]);
     }
     public function create(){
-        return view('endereco.create'); 
+        return view('enderecos.create'); 
     }
 
-    public function store(Request $request)
+    public function store(StoreEnderecoRequest $request)
     {
         $endereco = new Endereco();
         $endereco->logradouro = $request->logradouro;
@@ -29,23 +31,23 @@ class EnderecoController extends Controller
         $endereco->uf = $request->uf;
         $endereco->cliente_id = $request->cliente_id;
         $endereco->save();
-        return redirect('/endereco/index');
+        return redirect('enderecos.index');
     }
 
     
     public function edit($id){
         $endereco = Endereco::findorFail($id);
-        return view('endereco.edit', ['endereco'=>$endereco]);
+        return view('enderecos.edit', ['endereco'=>$endereco]);
     }
 
-    public function update(Request $request){
+    public function update(StoreEnderecoRequest $request){
         Endereco::find($request->id)->update($request->except('_method'));
-        return redirect('endereco/index')->with('msg', 'endereco atualizado');
+        return redirect('enderecos.index')->with('msg', 'endereco atualizado');
     }
     
     public function destroy($id){
         Endereco::findorFail($id)->delete();
-        return redirect('endereco/index')->with('msg', 'endereco excluído com sucesso');
+        return redirect('enderecos.index')->with('msg', 'endereco excluído com sucesso');
     }
 
 }

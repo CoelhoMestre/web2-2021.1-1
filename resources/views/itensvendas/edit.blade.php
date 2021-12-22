@@ -1,24 +1,37 @@
-<h1>Editar ItensVenda</h1>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDITAR ITENSVENDA</title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('titulo','Edição de ItensVendas')
+
+@section('conteudo')
+<div id="form">
+<h1>Edição de ItensVendas</h1>
     <form action="{{route('itensvendas.update', ['id' => $itensvenda->id])}}" method="post">
 
         @csrf
         @method('PUT')
-        <label for="">IdVenda:</label>
-        <input type="text" name="idvenda" id="idvenda" value="{{$venda->id}}">
-        <p><label for="">Quantidade:</label>
-        <input type="text" name="quantidade" id="quantidade" value="{{$itensvenda->quantidade}}">
+        <div class="input m-3">
+            <label for="">Idvendas:</label>
+            <input type="text" name="idvenda" id="idvenda" class="form-control @error('idvenda') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$venda->id}}">
+            @error('idvenda')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        </div>
+
+        <div class="input m-3">
+            <p><label for="">Quantidade:</label>
+            <input type="text" name="quantidade" id="quantidade" class="form-control @error('quantidade') is-invalid @enderror" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{$itensvenda->quantidade}}">
+            @error('quantidade')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+            @enderror
+        </div>
         
-        
-        <p><input type="submit" value="salvar">    
+        <div class="input m-3">
+            <input type="submit" class="form-control btn-dark" value="salvar">
+        </div>    
     </form>
-</body>
-</html>
+    </div>
+@endsection('conteudo')

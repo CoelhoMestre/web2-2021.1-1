@@ -1,0 +1,104 @@
+body{
+    margin:0 !important;
+    padding: 0 !important;
+    background: #212529 !important;
+    font: 85% arial, sans-serif !important;
+    text-align: center !important;
+}
+
+#container{
+    position: fixed;
+    text-align: center !important;
+    background: #212529 !important;
+    margin: 0px 0px 0px 0px !important;
+    width: auto;
+    height: 700px !important;
+    
+}
+
+#header{
+    text-align: center !important;
+    background: #000000 !important;
+    height: 10px !important;
+}
+
+#nav{
+    
+    float: center!important; 
+    width: auto !important;
+    background:  #ffffff !important;
+    color: rgb(255, 255, 255) !important;
+    margin: 0px 0px 0px 0px !important;
+}
+
+
+
+#form{
+    float: center !important;
+    width: auto;
+    background:  #212529 !important;
+    color: rgb(255, 255, 255) !important;
+    margin: 10px 300px 0px 300px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    
+}
+#form1{
+    text-align: left !important;
+    padding: 5px !important;
+    color: rgb(255, 255, 255) !important;
+    
+}
+#forminput{
+    
+    
+    border-radius: 10px 10px 10px 10px !important;
+
+}
+#footer{
+    background: #000000 !important;
+    color: rgb(233, 233, 233) !important;
+    padding: 5px !important;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    width: 100% !important;
+    margin: 0px 0px 0px 0px !important;
+    height: 100px !important;
+}
+#imglogo{
+    width: 10%!important;
+
+}
+
+#nav ul {
+    border-left:  1px solid white;
+}
+
+h1{
+    font-size: 48px !important;
+    color: rgb(255, 255, 255) !important;
+    padding: 2px 0 10px 0 !important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    padding-bottom: 30px !important;
+  } 
+
+#button{
+    text-align: center;
+    margin-left: 85% !important;
+    margin:5;
+}
+.btn-primary.custom-btn {
+	background-color: #ff111d !important;
+	border-color: #212529 !important;
+    
+}
+#contato{
+    margin-left: 85% !important;
+    background: #000000 !important;
+    color: rgb(233, 233, 233) !important;
+}
+#search{
+    width: 10% !important;
+    margin-left: 85% !important;
+}
